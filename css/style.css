@@ -1,0 +1,440 @@
+*,
+*::before,
+*::after {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box; }
+
+body {
+  font-family: 'Lato', sans-serif; }
+
+.ham,
+.menu {
+  display: none; }
+
+@media (max-width: 1024px) {
+  .ham__wrapper {
+    text-align: right;
+    position: fixed;
+    top: 0;
+    right: 0;
+    z-index: 100; }
+    .ham__wrapper .ham {
+      z-index: 100;
+      display: inline-block;
+      height: 50px;
+      width: 50px;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-evenly;
+      align-items: center;
+      cursor: pointer;
+      background-color: rgba(133, 133, 133, 0.664); }
+    .ham__wrapper .ham_line {
+      width: 50%;
+      height: 1.5px;
+      background-color: #333333;
+      transition: all 0.6s;
+      transition-timing-function: ease-out; }
+  .clicked .ham_line1 {
+    transform: translateY(13px) rotate(225deg);
+    transform-origin: center center; }
+  .clicked .ham_line2 {
+    width: 0px;
+    height: 0px; }
+  .clicked .ham_line3 {
+    transform: translateY(-13px) rotate(-225deg);
+    transform-origin: center center; }
+  .menu {
+    display: block;
+    z-index: 10;
+    position: fixed;
+    width: 300px;
+    height: 300px;
+    right: -100%;
+    background-color: rgba(255, 255, 255, 0.8);
+    transition: all 1s ease-out; }
+    .menu ul {
+      text-align: left;
+      list-style-type: none;
+      display: flex;
+      flex-direction: column;
+      height: 100%;
+      margin: 0;
+      justify-content: space-around; }
+      .menu ul li {
+        letter-spacing: 10px; }
+        .menu ul li a {
+          text-decoration: none;
+          padding: 5px 4px;
+          font-size: 1.5rem; }
+          .menu ul li a:link, .menu ul li a:active, .menu ul li a:visited {
+            color: black;
+            border-color: transparent; }
+          .menu ul li a:hover {
+            border-bottom: 2px solid black;
+            transition: all 0.3s ease-out; } }
+
+.clicked .menu {
+  right: 0%; }
+
+#dark {
+  transition: all 0.6s ease-out; }
+
+.dark.clicked {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: #000000;
+  opacity: 0.5;
+  z-index: 20; }
+
+header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  height: 90px;
+  background-color: #E1B000;
+  padding: 0 20px; }
+  header img {
+    display: block;
+    width: 42vh; }
+  header ul {
+    display: flex;
+    list-style: none;
+    padding: 0;
+    font-size: 1.3rem; }
+    header ul li + li {
+      padding-left: 20px; }
+    header ul a {
+      text-decoration: none;
+      padding: 5px 4px; }
+      header ul a:link, header ul a:active, header ul a:visited {
+        color: black;
+        border-color: transparent; }
+      header ul a:hover {
+        color: #cf7d30ec;
+        border-bottom: 2px solid #cf7d30ec;
+        transition: all 0.3s ease-out; }
+
+@media (max-width: 1024px) {
+  header {
+    display: none; } }
+
+/**
+ * @Author: Andrea Alba
+ * @Date:   2018-03-13T10:08:11+01:00
+ * @Email:  subjuliodesign [at] gmail.com
+ * @Project: Responsive Slideshow with jQuery
+ * @Filename: style.css
+ * @Last modified by:   Andrea Alba
+ * @Last modified time: 2018-03-23T13:06:33+01:00
+ * @Copyright: subjuliodesign
+ */
+/* =======================
+#General
+======================= */
+* {
+  margin: 0;
+  padding: 0; }
+
+body {
+  position: relative;
+  height: 100vh;
+  font-family: 'Cinzel', serif;
+  font-size: 16px; }
+
+/* =======================
+#Slideshow
+======================= */
+.container {
+  height: 100vh;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+  -ms-flex-pack: center;
+  justify-content: center;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  align-items: center; }
+
+/* #Slider */
+.slider {
+  width: 100%;
+  height: 100%;
+  overflow: hidden; }
+
+.slides {
+  width: calc(100% * 5);
+  height: 100%;
+  position: relative;
+  left: -100%; }
+
+.slides__img {
+  width: calc(100% / 5);
+  height: 100%;
+  float: left;
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+  position: relative; }
+
+.slides__img__filter {
+  width: 100%;
+  height: 100%;
+  background-color: #000;
+  position: absolute;
+  top: 0;
+  left: 0;
+  z-index: 10;
+  opacity: 0.3; }
+
+/* #Captions */
+.slide__caption {
+  width: 100%;
+  text-align: center;
+  color: #fff;
+  position: absolute;
+  bottom: 5%;
+  z-index: 20;
+  opacity: 0; }
+
+.slide__caption__title {
+  font-size: 3em;
+  line-height: 1.05em; }
+
+.slide__caption__subtitle {
+  font-size: 2.25em;
+  line-height: 1.25em; }
+
+.slide__caption__text {
+  font-size: 1.75em;
+  line-height: 1.25em; }
+
+/* #Controls */
+.control {
+  cursor: pointer;
+  position: absolute;
+  z-index: 20;
+  top: calc(50% - 50px);
+  padding: 15px;
+  color: #fff;
+  font-size: 3em;
+  opacity: 0.5; }
+
+.control:hover {
+  background-color: #fff;
+  opacity: 0.5;
+  color: #000;
+  color: rgba(0, 0, 0, 0.5); }
+
+#prev {
+  left: 0;
+  border-radius: 0 5px 5px 0; }
+
+#next {
+  right: 0;
+  border-radius: 5px 0 0 5px; }
+
+/* #Indicators */
+.dots {
+  width: 100%;
+  position: absolute;
+  z-index: 20;
+  bottom: 2%;
+  text-align: center; }
+
+.dots__single {
+  cursor: pointer;
+  display: inline-block;
+  width: 20px;
+  height: 6px;
+  background-color: #fff;
+  opacity: 0.5;
+  margin: 0 5px; }
+
+.dots__single:hover,
+.dots__current {
+  opacity: 1; }
+
+/* ########################
+Media Queries
+######################## */
+/* ------------------------
+#Desktop, iPad Pro
+------------------------ */
+/* ------------------------
+#Display 12", iPad Pro portrait, iPad landscape
+------------------------ */
+/* ------------------------
+#Medium Devices, Desktops
+------------------------ */
+@media only screen and (max-width: 992px) {
+  /* #Captions */
+  .slide__caption__title {
+    font-size: 2.5em;
+    line-height: 1.125em; }
+  .slide__caption__subtitle {
+    font-size: 2em; }
+  /* #Controls */
+  .prev,
+  .next {
+    font-size: 2.5em; } }
+
+/* ------------------------
+#Display 5.5", iPad portrait, iPhone 6, 6s, 7, 8 portrait and landscape, iPhone 5s landscape
+------------------------ */
+@media only screen and (max-width: 768px) {
+  /* #Captions */
+  .slide__caption__subtitle {
+    font-size: 1.625em; }
+  .slide__caption__text {
+    font-size: 1.5em; } }
+
+/* ------------------------
+#Extra Small Devices, Phones
+------------------------ */
+@media only screen and (max-width: 480px) {
+  /* #Captions */
+  .slide__caption__title {
+    font-size: 2em;
+    line-height: 1.25em; }
+  .slide__caption__subtitle {
+    line-height: 1.15384615em; }
+  .slide__caption__text {
+    font-size: 1.375em;
+    line-height: 1.13636364em; }
+  /* #Controls */
+  .prev,
+  .next {
+    font-size: 2em; } }
+
+/* ------------------------
+#Display 4", iPhone 5s portrait
+------------------------ */
+@media only screen and (max-width: 320px) {
+  /* #Controls */
+  .prev,
+  .next {
+    font-size: 1.5em; } }
+
+/* =======================
+#Hacks & Fixes
+======================= */
+/* Clearfix Hack*/
+.clearfix:after {
+  visibility: hidden;
+  display: block;
+  font-size: 0;
+  content: " ";
+  clear: both;
+  height: 0; }
+
+/* IE6 */
+* html .clearfix {
+  zoom: 1; }
+
+/* IE7 */
+*:first-child + html .clearfix {
+  zoom: 1; }
+
+/* Box Size Hack */
+*,
+*:before,
+*:after {
+  -webkit-box-sizing: border-box;
+  box-sizing: border-box; }
+
+.aboutUs {
+  padding: 5em 10em;
+  background-color: #E1B000;
+  text-align: center; }
+  .aboutUs .about {
+    display: flex;
+    margin-top: 3em; }
+    .aboutUs .about .image {
+      flex: 1;
+      display: flex;
+      align-items: center; }
+      .aboutUs .about .image img {
+        margin: 0 auto;
+        width: 90%; }
+    .aboutUs .about .text {
+      flex: 1; }
+      .aboutUs .about .text h1 {
+        font-size: 25px; }
+
+@media (max-width: 1024px) {
+  .aboutUs .about {
+    display: block; }
+    .aboutUs .about .image img {
+      margin-right: 30px;
+      width: 70%; }
+    .aboutUs .about .text {
+      margin-top: 2em; } }
+
+@media (max-width: 480px) {
+  .aboutUs {
+    display: block; } }
+
+.footer {
+  width: 100%;
+  padding: 2rem;
+  background-color: rgba(0, 0, 0, 0.75); }
+  .footer--container {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between; }
+    .footer--container a {
+      color: white;
+      padding: 10px 10px;
+      text-decoration: none; }
+      .footer--container a:hover {
+        color: silver; }
+    .footer--container .footer--nav {
+      display: flex;
+      list-style: none; }
+  .footer--icon .fab {
+    font-size: 1.5rem; }
+  .footer p {
+    text-align: center;
+    padding-top: 1rem;
+    color: silver; }
+
+@media (max-width: 760px) {
+  #footer p {
+    font-size: 12px; }
+  #footer .footer--container a {
+    font-size: 12px; }
+    #footer .footer--container a .fab {
+      font-size: 1rem; } }
+
+@media (max-width: 480px) {
+  .footer .footer--container .footer--nav {
+    display: flex;
+    flex-direction: column; }
+  .footer .footer--icon a::before {
+    padding: 1rem; } }
+
+#contactUs {
+  padding: 2rem;
+  background-color: #E1B000; }
+  #contactUs h2 {
+    text-align: center;
+    padding: 1.5rem; }
+  #contactUs .contact-container {
+    display: grid;
+    grid-template-columns: 1fr 1fr; }
+    #contactUs .contact-container .map {
+      width: 100%; }
+    #contactUs .contact-container .info-p {
+      padding: 1.5rem 0 1.5rem 2rem; }
+      #contactUs .contact-container .info-p .info-c {
+        display: flex; }
+        #contactUs .contact-container .info-p .info-c i {
+          padding: 0 5px 3px 0; }
+      #contactUs .contact-container .info-p .info-detail {
+        margin-bottom: 1rem; }
