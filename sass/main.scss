@@ -16,12 +16,14 @@ body{
 //humberger-menu
 
 .ham,
-.menu {
+.menu,
+.shoppngcart {
   display: none;
 }
 
 @media (max-width: 1024px){
 .ham__wrapper {
+  display: flex;
   text-align: right;
   position: fixed;
   top: 0;
@@ -46,6 +48,17 @@ body{
     background-color: #333333;
     transition: all 0.6s;
     transition-timing-function: ease-out;
+  }
+
+  .shoppngcart{
+    display: unset;
+    margin-right: 20px;
+    font-size: 35px;
+
+    a{
+      text-decoration: none;
+    }
+    
   }
 }
 
@@ -133,3 +146,4 @@ body{
 @import "aboutUs";
 @import "footer";
 @import "contact";
+@import "cart"

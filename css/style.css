@@ -9,11 +9,13 @@ body {
   font-family: 'Lato', sans-serif; }
 
 .ham,
-.menu {
+.menu,
+.shoppngcart {
   display: none; }
 
 @media (max-width: 1024px) {
   .ham__wrapper {
+    display: flex;
     text-align: right;
     position: fixed;
     top: 0;
@@ -36,6 +38,12 @@ body {
       background-color: #333333;
       transition: all 0.6s;
       transition-timing-function: ease-out; }
+    .ham__wrapper .shoppngcart {
+      display: unset;
+      margin-right: 20px;
+      font-size: 35px; }
+      .ham__wrapper .shoppngcart a {
+        text-decoration: none; }
   .clicked .ham_line1 {
     transform: translateY(13px) rotate(225deg);
     transform-origin: center center; }
@@ -438,3 +446,7 @@ Media Queries
           padding: 0 5px 3px 0; }
       #contactUs .contact-container .info-p .info-detail {
         margin-bottom: 1rem; }
+
+.cart {
+  height: 450px;
+  background-color: white; }
